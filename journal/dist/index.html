@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>試行錯誤ジャーナル</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+        }
+        .codehilite {
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow: auto;
+        }
+        pre code {
+            display: block;
+            padding: 10px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        /* Pygments用のスタイル */
+        .codehilite .hll { background-color: #ffffcc }
+        .codehilite .c { color: #3D7B7B; font-style: italic }
+        .codehilite .k { color: #008000; font-weight: bold }
+        .codehilite .o { color: #666666 }
+        /* 他のPygmentsスタイルもここに追加 */
+    </style>
+</head>
+<body>
+    </div><div class="card"><h1>2024-11-03</h1>
+<p>No1<br>
+モンテカルロ木探索をGPUを用いて実行するようにした。<br>
+性能向上や高速化によりなんとか良くなってきたがまだ実行には時間がかかる。<br>
+次回はディープラーニングを作成する。</p>
+<h2>結果(raw)</h2>
+<blockquote>
+<p>MonteCarloAI(2) by MonteCarloAI(2) B:0, W:10, Draw:0<br>
+MonteCarloAI(2) by MonteCarloAI(3) B:2, W:8, Draw:0<br>
+MonteCarloAI(2) by MonteCarloAI(4) B:0, W:9, Draw:1</p>
+<p>MonteCarloAI(3) by MonteCarloAI(2) B:7, W:3, Draw:0<br>
+MonteCarloAI(3) by MonteCarloAI(3) B:4, W:6, Draw:0<br>
+MonteCarloAI(3) by MonteCarloAI(4) B:8, W:2, Draw:0</p>
+<p>MonteCarloAI(4) by MonteCarloAI(2) B:5, W:5, Draw:0<br>
+MonteCarloAI(4) by MonteCarloAI(3) B:3, W:7, Draw:0<br>
+MonteCarloAI(4) by MonteCarloAI(4) B:5, W:4, Draw:1</p>
+</blockquote>
+</div><div class="card"><h1>2024-11-04</h1>
+<p>No2<br>
+ディープラーニングを用いたAIを開発した。<br>
+initial trainingとself-play trainingの二段階に分けてトレーニングし、LOSSが目標値を下回ったら学習終了するようにした。評価関数はevaluator4を使用した。<br>
+結果を見るとわかるように、MinimaxAI(4)に勝利しているのにもかかわらずMinimaxAI(2)やMinimaxAI(3)には完敗しており、<br>
+評価関数に応じて先手必勝・後手必勝があるのかもしれない。少なくとも2、3、4の評価関数では正確に計測できていないと考える。<br>
+そしてそこに法則があるのでそれを検証する必要がある。</p>
+<h2>結果(raw)</h2>
+<blockquote>
+<p>MaxAI by DeepLearningAI B:0, W:1000, Draw:0<br>
+CornerAI by DeepLearningAI B:244, W:727, Draw:29<br>
+MinimaxAI(2) by DeepLearningAI B:1000, W:0, Draw:0<br>
+MinimaxAI(3) by DeepLearningAI B:1000, W:0, Draw:0<br>
+MinimaxAI(4) by DeepLearningAI B:0, W:1000, Draw:0</p>
+</blockquote>
+</div><div class="card"><h1>2024-11-05</h1>
+<p>No3<br>
+評価関数をディープラーニングで実装しようとした。<br>
+実装にミスが多く完成はしなかった。</p>
+</div><div class="card"><h1>2024-11-12</h1>
+<p>No4<br>
+新しい仮説の追加：<br>
+ディープラーニングはデータの質が良ければいいほど強くなる</p>
+</div><div class="card"><h1>2025-01-24</h1>
+<p>No5<br>
+AIを作った。とりあえず5000エピソードで学習。昨日の夜学習始めて15時間かかった。<br>
+今日が午前授業だったのでちょうどよかったが、時間がかかりすぎる。しかも、対戦させてみたら弱い。Minimax法にボコボコにされていた。100回戦って100回負けていた。<br>
+自分とも対戦してみたが弱かった。こいつには負ける気がしない。Minimax法を対戦相手として学習させたら良さそうなのと、たぶん学習回数が足りないのでもっと学習回数を増やす。GPUを使って高速化する。</p></div>
+</body>
+</html>
+        
