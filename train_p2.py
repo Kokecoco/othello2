@@ -308,7 +308,7 @@ def train_ai_parallel(episodes=100000, num_envs=6):
                         f"Epsilon: {ai.epsilon:.2f}"
                     )
 
-        ai.model.save("othello_model2.keras")
+        ai.model.save(f"othello_model_{episodes}.keras")
         return ai
 
     except Exception as e:
