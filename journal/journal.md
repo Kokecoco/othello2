@@ -54,3 +54,24 @@ No5
 AIを作った。とりあえず5000エピソードで学習。昨日の夜学習始めて15時間かかった。
 今日が午前授業だったのでちょうどよかったが、時間がかかりすぎる。しかも、対戦させてみたら弱い。Minimax法にボコボコにされていた。100回戦って100回負けていた。
 自分とも対戦してみたが弱かった。こいつには負ける気がしない。Minimax法を対戦相手として学習させたら良さそうなのと、たぶん学習回数が足りないのでもっと学習回数を増やす。GPUを使って高速化する。
+
+# 2025-02-25
+
+No6
+データ取った。
+
+## 結果 Matrix
+>                     CornerAI DQNOthelloAI1 DQNOthelloAI10 DQNOthelloAI100 DQNOthelloAI1000 DQNOthelloAI10000 DQNOthelloAI100000 DQNOthelloAI1000000 MaxAI MinimaxAI(2) MinimaxAI(3) MinimaxAI(4) MonteCarloAI(2)
+> CornerAI                   -          Lose           Lose             Win              Win               Win                Win                 Win  Lose         Lose         Lose         Lose             Win
+> DQNOthelloAI1            Win             -           Lose            Lose              Win               Win                Win                 Win  Lose         Draw         Lose         Lose             Win
+> DQNOthelloAI10           Win           Win              -             Win              Win               Win                Win                 Win  Lose         Lose         Lose         Lose            Draw
+> DQNOthelloAI100         Lose           Win           Lose               -             Lose              Lose               Lose                Lose  Lose          Win         Lose         Lose            Draw
+> DQNOthelloAI1000        Lose          Lose           Lose             Win                -              Lose               Lose                Lose  Lose         Lose         Lose         Lose            Lose
+> DQNOthelloAI10000       Lose          Lose           Lose             Win              Win                 -               Lose                Lose  Lose         Lose         Lose         Lose            Lose
+> DQNOthelloAI100000      Lose          Lose           Lose             Win              Win               Win                  -                Lose  Lose         Lose         Lose         Lose            Lose
+> DQNOthelloAI1000000     Lose          Lose           Lose             Win              Win               Win                Win                   -  Lose         Lose         Lose         Lose            Lose
+> MaxAI                    Win           Win            Win             Win              Win               Win                Win                 Win     -          Win         Lose         Lose             Win
+> MinimaxAI(2)             Win          Draw            Win            Lose              Win               Win                Win                 Win  Lose            -          Win          Win             Win
+> MinimaxAI(3)             Win           Win            Win             Win              Win               Win                Win                 Win   Win         Lose            -          Win             Win
+> MinimaxAI(4)             Win           Win            Win             Win              Win               Win                Win                 Win   Win         Lose         Lose            -             Win
+> MonteCarloAI(2)         Lose          Lose           Draw            Draw              Win               Win                Win                 Win  Lose         Lose         Lose         Lose               -
