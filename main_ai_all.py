@@ -1,7 +1,5 @@
-from base import MaxAI, CornerAI, play_cpu_by_cpu
-from minimax import MinimaxAI
+from base import play_cpu_by_cpu
 from train import DQNOthelloAI
-from mcts import MonteCarloAI
 import tensorflow as tf
 from tqdm import tqdm
 
@@ -23,27 +21,13 @@ dqn = DQNOthelloAI()
 dqn.model = loaded_model
 dqn.epsilon = 0  # 評価時は探索をオフに
 
-m = MaxAI()
-c = CornerAI()
-mm2 = MinimaxAI(2)
-mm3 = MinimaxAI(3)
-mm4 = MinimaxAI(4)
-mcts = MonteCarloAI(2)
-cpus += [m, c, mm2, mm3, mm4, mcts]
-
 
 def get_data():
     global results
     for i in range(len(cpus)):
         for j in range(len(cpus)):
             wins = [0, 0, 0]
-            num_battle = (
-                10
-                if cpus[i].__class__.__name__ == "MonteCarloAI"
-                or cpus[j].__class__.__name__ == "MonteCarloAI"
-                else 100
-            )
-            for _ in tqdm(range(num_battle)):
+            for _ in tqdm(range(1000)):
                 winner = play_cpu_by_cpu(cpus[i], cpus[j], False)
                 if winner == "B":
                     wins[0] += 1
@@ -51,26 +35,8 @@ def get_data():
                     wins[1] += 1
                 else:
                     wins[2] += 1
-            cpu1name = cpus[i].__class__.__name__
-            cpu1name = (
-                (
-                    cpu1name
-                    if (cpu1name != "MinimaxAI" and cpu1name != "MonteCarloAI")
-                    else cpu1name + "(" + str(cpus[i].evaluater) + ")"
-                )
-                if cpu1name != "DQNOthelloAI"
-                else cpu1name + str(10**i)
-            )
-            cpu2name = cpus[j].__class__.__name__
-            cpu2name = (
-                (
-                    cpu2name
-                    if (cpu2name != "MinimaxAI" and cpu2name != "MonteCarloAI")
-                    else cpu2name + "(" + str(cpus[j].evaluater) + ")"
-                )
-                if cpu2name != "DQNOthelloAI"
-                else cpu2name + str(10**j)
-            )
+            cpu1name = cpus[i].__class__.__name__ + str(10**i)
+            cpu2name = cpus[j].__class__.__name__ + str(10**j)
             print(
                 f"{cpu1name} by {cpu2name} ",
                 "B:",
